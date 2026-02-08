@@ -5,12 +5,13 @@ import { PaginacaoResponse } from '../../../shared/models';
 import { AtoresResponse } from '../models/responses/atores-response.model';
 import { AtoresRequest } from '../models/requests/atores-request.model';
 import { withRequestParams } from '../../../core/tokens/http-context.token';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AtoresService {
-  private apiUrl = 'http://localhost:5095/api/atores';
+  private apiUrl = `${environment.apiUrl}/atores`;
 
   constructor(private http: HttpClient) { }
 

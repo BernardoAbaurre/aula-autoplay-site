@@ -5,12 +5,13 @@ import { PaginacaoResponse } from '../../../shared/models/paginacao-response.mod
 import { FilmesResponse } from '../models/responses';
 import { FilmesRequest } from '../models/requests';
 import { withRequestParams } from '../../../core/tokens/http-context.token';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilmesService {
-  private apiUrl = 'http://localhost:5095/api/filmes';
+  private apiUrl = `${environment.apiUrl}/filmes`;
 
   constructor(private http: HttpClient) {}
 
