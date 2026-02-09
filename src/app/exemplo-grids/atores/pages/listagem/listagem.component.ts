@@ -17,10 +17,10 @@ export class ListagemComponent implements OnInit {
   erro: string = '';
   filtroForm: FormGroup;
 
-  request: AtoresRequest = {
+  request: AtoresRequest = new AtoresRequest({
     Pagina: 1,
     TamanhoPagina: 100
-  };
+  });
 
   constructor(
     private atoresService: AtoresService,
@@ -63,7 +63,7 @@ export class ListagemComponent implements OnInit {
   filtrar(): void {
     const filtros = this.filtroForm.value;
 
-    this.request = {
+    this.request = new AtoresRequest({
       Pagina: 1,
       TamanhoPagina: 100,
       OrdenarPor: this.request.OrdenarPor,
@@ -77,7 +77,7 @@ export class ListagemComponent implements OnInit {
       DataFalecimentoFim: filtros.DataFalecimentoFim ? new Date(filtros.DataFalecimentoFim) : undefined,
       AlturaMinima: filtros.AlturaMinima || undefined,
       AlturaMaxima: filtros.AlturaMaxima || undefined
-    };
+    });
 
     this.carregarAtores();
   }
@@ -95,10 +95,10 @@ export class ListagemComponent implements OnInit {
       AlturaMaxima: null
     });
 
-    this.request = {
+    this.request = new AtoresRequest({
       Pagina: 1,
       TamanhoPagina: 100
-    };
+    });
 
     this.carregarAtores();
   }

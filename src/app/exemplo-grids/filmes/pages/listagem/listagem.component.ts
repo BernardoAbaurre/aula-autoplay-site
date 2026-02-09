@@ -16,10 +16,10 @@ export class ListagemComponent implements OnInit {
   erro: string = '';
   filtroForm: FormGroup;
 
-  request: FilmesRequest = {
+  request: FilmesRequest = new FilmesRequest({
     Pagina: 1,
     TamanhoPagina: 100
-  };
+  });
 
   constructor(
     private filmesService: FilmesService,
@@ -60,7 +60,7 @@ export class ListagemComponent implements OnInit {
   filtrar(): void {
     const filtros = this.filtroForm.value;
 
-    this.request = {
+    this.request = new FilmesRequest({
       Pagina: 1,
       TamanhoPagina: 100,
       OrdenarPor: this.request.OrdenarPor,
@@ -72,7 +72,7 @@ export class ListagemComponent implements OnInit {
       NotaMaxima: filtros.NotaMaxima || undefined,
       DuracaoMinima: filtros.DuracaoMinima || undefined,
       DuracaoMaxima: filtros.DuracaoMaxima || undefined
-    };
+    });
 
     this.carregarFilmes();
   }
@@ -88,10 +88,10 @@ export class ListagemComponent implements OnInit {
       DuracaoMaxima: null
     });
 
-    this.request = {
+    this.request = new FilmesRequest({
       Pagina: 1,
       TamanhoPagina: 100
-    };
+    });
 
     this.carregarFilmes();
   }
